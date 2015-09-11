@@ -1,0 +1,9 @@
+{
+    "require": {
+        "respect/rest": "0.6.0",
+	"respect/data": "0.2.2",
+	"respect/relational": "0.8.0",
+	"respect/config": "0.3.x",
+	"respect/validation": "0.4.x"
+    }
+} 
