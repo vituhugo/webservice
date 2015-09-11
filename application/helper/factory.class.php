@@ -2,13 +2,13 @@
 
 class Factory {
 
-    static public function getController($controller_class) {
-        $class = "Application\\Controller\\$controller_class";
+    static public function getController($class_controller) {
+        $class = "Application\\Controllers\\$class_controller";
         return new $class();
     }
 
-    static public function getModel($model_class) {
-        $class = "Application\\Model\\$model_class";
+    static public function getModel($class_model) {
+        $class = "Application\\Model\\$class_model";
         return new $class();
     }
 }

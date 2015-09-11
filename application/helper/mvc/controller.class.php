@@ -1,4 +1,4 @@
-<?php namespace Application\Helper\Control;
+<?php namespace Application\Controllers;
 
 abstract class Controller {
 

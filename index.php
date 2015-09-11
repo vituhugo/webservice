@@ -9,13 +9,25 @@ $router = new Respect\Rest\Router();
 
 //AutoLoad MVC
 spl_autoload_register( function( $classname ) {
-    $dirs = array(
-        'Controller' => '.controller',
-        'Model' => '.model',
-        'Helper' => '.class'
-    );
-    $key = explode("\\",$classname)[1];
-    require str_replace( '\\', SD, strtolower($classname) ) .$dirs[$key].'.php';
+
+    $keys = explode("\\", $classname);
+    if (current($keys) === "Application") {
+        $map = array(
+            'Application\\Controllers\\Controller' => 'application'.SD.'helper'.SD.'mvc'.SD.'controller.class.php',
+            'Application\\Model\\Model' => 'application'.SD.'helper'.SD.'mvc'.SD.'model.class.php'
+        );
+        $classes_prefixo = array(
+            'Controllers' => '.controller',
+            'Model' => '.model',
+            'Helper' => '.class'
+        );
+
+        if (isset($map[$classname])) {
+            require $map[$classname];
+        } else {
+            require str_replace( '\\', SD, strtolower($classname) ) .$classes_prefixo[$keys[1]].'.php';
+        }
+    }
 });
 
 Application\bootstrap($mapper, $router, $config);

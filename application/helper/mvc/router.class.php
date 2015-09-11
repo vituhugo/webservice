@@ -1,18 +1,18 @@
-<?php namespace Application\Helper\Control;
+<?php namespace Application\Helper\Mvc;
 
 use Respect\Rest;
 use Application\Helper;
 
 class Router implements Rest\Routable {
 
-    private $module_exist;
+    private $controller_com_modulo;
 
-    function __construct($module_exist = false) {
-        $this->module_exist = $module_exist;
+    function __construct($controller_com_modulo = false) {
+        $this->controller_com_modulo = $controller_com_modulo;
     }
 
     public function get($params) {
-        $module         = $this->module_exist && isset($param[0]) ? ucfirst(array_shift($params))."\\" : '';
+        $module         = $this->controller_com_modulo && isset($param[0]) ? ucfirst(array_shift($params))."\\" : '';
         $controller     = isset($param[0])      ?    ucfirst(array_shift($params))      : 'index';
         $action         = isset($param[0])      ?    array_shift($params)               : 'index';
 
